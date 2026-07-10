@@ -1,0 +1,26 @@
+# Atlas Git Attributes
+
+# Shell scripts should have LF endings (Unix)
+*.sh text eol=lf
+
+# Python files
+*.py text eol=lf
+
+# JavaScript/TypeScript
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+
+# Markdown
+*.md text eol=lf
+
+# Config files
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+
+# SQL
+*.sql text eol=lf

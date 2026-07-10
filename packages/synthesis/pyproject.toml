@@ -1,0 +1,13 @@
+[project]
+name = "atlas-synthesis"
+version = "0.1.0"
+description = "Evidence synthesis for Atlas (Phase 1+)"
+requires-python = ">=3.12"
+dependencies = [
+    "atlas-schemas",
+    "atlas-llm",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

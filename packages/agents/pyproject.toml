@@ -1,0 +1,12 @@
+[project]
+name = "atlas-agents"
+version = "0.1.0"
+description = "Agent implementations for Atlas"
+requires-python = ">=3.12"
+dependencies = [
+    "atlas-schemas",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,12 @@
+[project]
+name = "atlas-schemas"
+version = "0.1.0"
+description = "Core Pydantic schemas for Atlas"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
