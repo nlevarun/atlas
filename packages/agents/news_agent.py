@@ -116,6 +116,8 @@ class NewsAgent(BaseAgent):
                     json={
                         "api_key": self.api_key,
                         "query": query,
+                        "topic": "news",
+                        "days": 30,
                         "search_depth": "basic",
                         "include_answer": False,
                         "include_raw_content": False,
@@ -127,7 +129,14 @@ class NewsAgent(BaseAgent):
 
                 if response.status_code == 200:
                     data = response.json()
-                    return data.get("results", [])
+                    results = data.get("results", [])
+                    # Sort newest-first as a safeguard, in case the API
+                    # doesn't already return results in date order.
+                    results.sort(
+                        key=lambda r: r.get("published_date") or "",
+                        reverse=True
+                    )
+                    return results
                 else:
                     # Fallback to mock data on error
                     return self._mock_news_results(query)
@@ -217,7 +226,6 @@ class NewsAgent(BaseAgent):
 
         Args:
             evidence: List of evidence items
-            company_id: Company identifier
 
         Returns:
             Summary string

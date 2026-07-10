@@ -1,41 +1,30 @@
 # Atlas
 
-**AI Operating System for Company Intelligence - 100% FREE**
+AI operating system for company intelligence. Atlas runs four research agents in parallel, gathers evidence with citations, and synthesizes a report — all on free tiers, with no paid APIs required.
 
-🚀 Complete research system with 4 AI agents • Evidence-backed analysis • Real-time streaming • **Zero cost**
+## What it does
 
----
+Atlas researches a company across four angles at once:
 
-## 🎉 Completely FREE
+- **News agent** — recent articles and announcements, via Tavily's free tier or mock data if no key is set
+- **Financial agent** — SEC EDGAR filings, no key needed
+- **Hiring agent** — job posting signals, mock data only for now
+- **GitHub agent** — repository activity and stars, via the GitHub API
 
-**No paid APIs. No subscriptions. No credit cards.**
+Results get combined into a written report. By default this uses template-based synthesis; if you add a Groq key, it uses an LLM instead. Every claim in the report links back to a source URL and excerpt.
 
-Atlas uses:
-- ✅ **Template-based synthesis** → Smart, instant, free forever
-- ✅ **Realistic mock data** → Works without any API keys
-- ✅ **Optional free tiers** → Groq (LLM), Tavily (news), GitHub
+## Setup (Mac)
 
-**Cost: $0.00 per month, forever.**
-
----
-
-## Quick Start (Mac Only)
-
-### 1. Install Prerequisites (5 min)
+Install prerequisites:
 
 ```bash
-# Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install Python, Node.js, Docker
 brew install python@3.12 node@20
 brew install --cask docker
-
-# Start Docker Desktop
 open -a Docker
 ```
 
-### 2. Setup Atlas (5 min)
+Run the setup script:
 
 ```bash
 cd ~/atlas
@@ -43,250 +32,60 @@ chmod +x *.sh
 ./setup_mac.sh
 ```
 
-### 3. Start & Test (30 seconds)
+Start Atlas:
 
 ```bash
 ./start_all.sh
-# Opens http://localhost:3000 automatically
-
-# Search: "Anthropic"
-# Get: Professional report in 5-10 seconds
-# Cost: $0.00
 ```
 
----
+This opens `http://localhost:3000` automatically. Search a company name and you'll get a report in 5-10 seconds.
 
-## What You Get
+## Running for free
 
-### 4 Research Agents (All FREE)
+Atlas works with no API keys at all: agents fall back to realistic mock data, and synthesis uses templates instead of an LLM. To pull real data instead, add any of these free keys to `.env`:
 
-**📰 News Agent**
-- Searches recent articles (mock data or Tavily free tier)
-- Press releases, announcements
-- Confidence: 85-95%
+| Service | What it enables | Free tier | Sign up |
+|---|---|---|---|
+| Groq | LLM-written synthesis instead of templates | 6,000 requests/day | console.groq.com |
+| Tavily | Real news search | 1,000 searches/month | tavily.com |
+| GitHub | Real repo stats, higher rate limits | 5,000 requests/hour | github.com/settings/tokens |
+| SEC EDGAR | Real financial filings | Unlimited, no key | just add your name/email to `.env` |
 
-**💰 Financial Agent**
-- SEC Edgar filings (always free, no API key)
-- Revenue, funding, metrics
-- Confidence: 90-95%
-
-**👥 Hiring Agent**
-- Job posting analysis (mock data)
-- Team growth signals
-- Confidence: 85-90%
-
-**💻 GitHub Agent**
-- Repository activity (free GitHub API)
-- Stars, forks, development momentum
-- Confidence: 85-92%
-
-### Smart Template Synthesis (FREE)
-
-**No LLM APIs needed!**
-- Intelligent pattern matching
-- Professional narratives
-- Evidence citations
-- Instant results
-
-**Or use Groq (optional FREE tier):**
-- Real LLM (Llama 3.1 70B)
-- 6,000 requests/day free
-- Better quality, still $0
-
----
-
-## Free Tier Options
-
-**Want better quality?** Add free tier APIs (optional):
-
-### Groq (FREE LLM)
-- Sign up: https://console.groq.com
-- Free tier: 6,000 requests/day
-- Fastest LLM in the world
-- Add to `.env`: `GROQ_API_KEY=gsk_xxx`
-- **Cost: $0.00**
-
-### Tavily (FREE News)
-- Sign up: https://tavily.com
-- Free tier: 1,000 searches/month
-- Real news articles
-- Add to `.env`: `TAVILY_API_KEY=tvly_xxx`
-- **Cost: $0.00**
-
-### GitHub (FREE)
-- Generate token: https://github.com/settings/tokens
-- Free: 5,000 requests/hour
-- No limits, ever
-- Add to `.env`: `GITHUB_TOKEN=ghp_xxx`
-- **Cost: $0.00**
-
-**All optional. Atlas works great without them.**
-
----
-
-## Features
-
-✅ **4 Real Research Agents**
-✅ **Real-Time Streaming** (WebSocket)
-✅ **Evidence-Backed Claims** (every claim cited)
-✅ **Professional Reports** (15-20 evidence items)
-✅ **Template Synthesis** (smart, instant, free)
-✅ **Optional Free LLM** (Groq - Llama 3.1 70B)
-✅ **Works Offline** (with mock data)
-✅ **Zero Cost Forever**
-
----
-
-## Documentation
-
-**Essential Reading:**
-- **[README_MAC.md](README_MAC.md)** - Quick setup for Mac
-- **[FREE_TIER_GUIDE.md](FREE_TIER_GUIDE.md)** - **← READ THIS!** All free options
-- **[MAC_SETUP.md](MAC_SETUP.md)** - Detailed installation
-- **[OPERATIONS_MANUAL.md](OPERATIONS_MANUAL.md)** - How to use daily
-- **[USER_GUIDE.md](USER_GUIDE.md)** - Research best practices
-
-**For Developers:**
-- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - System design
-- **[PHASE_0_COMPLETE.md](PHASE_0_COMPLETE.md)** - Phase 0 details
-- **[PHASE_1_COMPLETE.md](PHASE_1_COMPLETE.md)** - Phase 1 details
-
----
-
-## Tech Stack
-
-**Backend:**
-- Python 3.12 + FastAPI
-- Template-based synthesis (no paid APIs!)
-- Optional: Groq (free tier LLM)
-
-**Frontend:**
-- Next.js 14 + React 18
-- Real-time WebSocket
-- Tailwind CSS
-
-**Infrastructure:**
-- Docker (Postgres, Neo4j, Qdrant, Redis, Temporal)
-- All run locally on your Mac
-
----
-
-## Cost Comparison
-
-### Atlas (FREE Setup)
-| Component | Cost |
-|-----------|------|
-| Synthesis | $0.00 (templates) |
-| News | $0.00 (mock data) |
-| Financial | $0.00 (SEC Edgar) |
-| Hiring | $0.00 (mock data) |
-| GitHub | $0.00 (mock data) |
-| **Total/month** | **$0.00** |
-
-### Atlas (FREE Tiers)
-| Component | Cost |
-|-----------|------|
-| Synthesis | $0.00 (Groq free) |
-| News | $0.00 (Tavily 1000/mo) |
-| Financial | $0.00 (SEC Edgar) |
-| Hiring | $0.00 (mock data) |
-| GitHub | $0.00 (GitHub API) |
-| **Total/month** | **$0.00** |
-
-### Paid Alternatives
-| Service | Cost |
-|---------|------|
-| OpenAI GPT-4 | $10-30/mo |
-| Research platforms | $100-1000/mo |
-| Manual research | $100+ per company |
-| **Total/month** | **$100-1000+** |
-
-**Atlas saves you $100-1000/month!**
-
----
+None of these need a credit card. All are optional, and you can mix and match — add just a Tavily key, for instance, and everything else keeps using mock data.
 
 ## Commands
 
 ```bash
-# Setup (once)
-./setup_mac.sh
-
-# Daily use
-./start_all.sh         # Start everything
-./stop_all.sh          # Stop everything
-./status.sh            # Check status
-./restart_backend.sh   # Restart backend
-./reset_all.sh         # Fresh start
+./setup_mac.sh          # one-time setup
+./start_all.sh          # start everything
+./stop_all.sh           # stop everything
+./status.sh             # check what's running
+./restart_backend.sh    # restart just the backend
+./reset_all.sh          # wipe data and start fresh
 ```
-
----
 
 ## Requirements
 
-- macOS 12.0+ (Monterey or later)
-- 8GB RAM minimum (16GB recommended)
+- macOS 12 or later
+- 8GB RAM (16GB recommended)
 - 10GB free disk space
-- Python 3.12+
-- Node.js 20+
-- Docker Desktop
+- Python 3.12+, Node.js 20+, Docker Desktop
 
----
+## Tech stack
 
-## Use Cases
+**Backend:** Python 3.12, FastAPI, template-based synthesis with an optional Groq LLM.
+**Frontend:** Next.js 14, React 18, Tailwind CSS, WebSocket updates for live agent status.
+**Infrastructure:** Docker containers for Postgres, Neo4j, Qdrant, Redis, and Temporal, all running locally.
 
-**Investors**: Due diligence, portfolio monitoring
-**Analysts**: Market research, company reports
-**Founders**: Competitive intelligence, market mapping
-**Recruiters**: Company health assessment
+## Documentation
 
-**All for $0.00/month.**
-
----
-
-## Performance
-
-- **Execution Time**: 5-10 seconds
-- **Evidence per Run**: 15-20 items
-- **Cost**: $0.00 (with or without free tiers)
-- **Quality**: Excellent (template) or Better (Groq free)
-- **Latency**: <50ms WebSocket updates
-
----
-
-## What's Different?
-
-**We removed ALL paid APIs:**
-- ❌ OpenAI ($0.10/run)
-- ❌ Anthropic ($0.08/run)
-- ❌ Paid search APIs
-
-**Replaced with:**
-- ✅ Smart template synthesis (free)
-- ✅ Groq LLM (free tier)
-- ✅ Mock data (realistic)
-- ✅ SEC Edgar (always free)
-
-**Result: $0.00/month forever.**
-
----
+- [README_MAC.md](README_MAC.md) — Mac quick start
+- [FREE_TIER_GUIDE.md](FREE_TIER_GUIDE.md) — free tier setup details
+- [MAC_SETUP.md](MAC_SETUP.md) — detailed installation
+- [OPERATIONS_MANUAL.md](OPERATIONS_MANUAL.md) — day-to-day usage
+- [USER_GUIDE.md](USER_GUIDE.md) — research tips
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — system design, for contributors
 
 ## License
 
 MIT
-
----
-
-## Support
-
-- **Setup**: See [MAC_SETUP.md](MAC_SETUP.md)
-- **Free Tiers**: See [FREE_TIER_GUIDE.md](FREE_TIER_GUIDE.md)
-- **Usage**: See [OPERATIONS_MANUAL.md](OPERATIONS_MANUAL.md)
-- **GitHub**: https://github.com/nlevarun/atlas
-
----
-
-**Atlas: Company intelligence that's actually free.** 🎉
-
-No hidden costs. No credit card. No trials. Just free, forever.
-
-Ready? → [README_MAC.md](README_MAC.md)
