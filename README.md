@@ -1,6 +1,6 @@
 # Atlas
 
-AI operating system for company intelligence. Atlas runs four research agents in parallel, gathers evidence with citations, and synthesizes a report — all on free tiers, with no paid APIs required.
+AI operating system for company intelligence. Atlas runs four research agents in parallel, gathers evidence with citations, and synthesizes a report.
 
 ## What it does
 
