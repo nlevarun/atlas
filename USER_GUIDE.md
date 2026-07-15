@@ -6,7 +6,7 @@
 
 ## Who This Guide Is For
 
-- **Investors**: Due diligence, market research, competitive analysis
+- **Investors**: Due diligence, market research, competitive analysis 
 - **Analysts**: Company intelligence, trend detection, report generation
 - **Founders**: Competitive intelligence, market mapping, partnership research
 - **Recruiters**: Company health assessment, team growth signals
