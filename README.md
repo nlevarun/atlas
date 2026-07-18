@@ -6,10 +6,10 @@ AI operating system for company intelligence. Atlas runs four research agents in
 
 Atlas researches a company across four angles at once:
 
-- **News agent** — recent articles and announcements, via Tavily's free tier or mock data if no key is set
-- **Financial agent** — SEC EDGAR filings, no key needed
-- **Hiring agent** — job posting signals, mock data only for now
-- **GitHub agent** — repository activity and stars, via the GitHub API
+- **News agent** - recent articles and announcements, via Tavily's free tier or mock data if no key is set
+- **Financial agent** - SEC EDGAR filings, no key needed
+- **Hiring agent** - job posting signals, mock data only for now
+- **GitHub agent** - repository activity and stars, via the GitHub API
 
 Results get combined into a written report. By default this uses template-based synthesis; if you add a Groq key, it uses an LLM instead. Every claim in the report links back to a source URL and excerpt. 
 
