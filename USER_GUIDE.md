@@ -24,7 +24,7 @@ Before your first research run:
 - [ ] You know what to expect (15-20 evidence items in 5-10 seconds)
 - [ ] You're ready to verify claims by clicking sources
 
----
+--- 
 
 ## Research Workflow
 
